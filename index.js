@@ -12,9 +12,12 @@ async function handleRequest(request) {
   const browser = Bowser.getParser(userAgent)
 
   const hasNativeSupportOnImages = browser.satisfies({
-    chrome: '>80',
-    firefox: '>77',
-    edge: '>80'
+    chrome: '>76',
+    firefox: '>75',
+    edge: '>80',
+    mobile: {
+      chrome: '>80'
+    }
   })
 
   const hasNativeSupportOnIframes = browser.satisfies({
