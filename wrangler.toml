@@ -5,7 +5,5 @@ workers_dev = false
 zone_id = "b9bf055168903c1cd533603c2bf026c1"
 routes = [
   "https://www.rankia.mx/blog/*",
-  "https://rankia.mx/blog/*",
-  "https://www.rankia.mx/foros/*",
-  "https://rankia.mx/foros/*"
+  "https://www.rankia.mx/foros/*"
 ]
