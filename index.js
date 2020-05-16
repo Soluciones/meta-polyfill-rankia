@@ -12,8 +12,8 @@ async function handleRequest(request) {
   const browser = Bowser.getParser(userAgent)
 
   const hasNativeSupportOnImages = browser.satisfies({
-    chrome: '>76',
-    firefox: '>75',
+    chrome: '>80',
+    firefox: '>77',
     edge: '>80'
   })
 
