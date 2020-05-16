@@ -5,10 +5,6 @@ async function handleRequest(request) {
 
   const userAgent = request.headers.get('User-Agent') || ''
 
-  //if (userAgent.includes('bot')) {
-  //  return response
-  //}
-
   const browser = Bowser.getParser(userAgent)
 
   const hasNativeSupportOnImages = browser.satisfies({
