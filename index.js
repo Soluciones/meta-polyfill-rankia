@@ -17,7 +17,7 @@ async function handleRequest(request) {
   })
 
   const hasNativeSupportOnIframes = browser.satisfies({
-    chrome: '>81',
+    chrome: '>84',
     firefox: '>78'
   })
 
