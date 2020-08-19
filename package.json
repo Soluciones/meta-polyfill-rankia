@@ -5,8 +5,7 @@
   "description": "A template for kick starting a Cloudflare Workers project",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "format": "prettier --write '**/*.{js,css,json,md}'"
+    "test": "mocha"
   },
   "author": "007lva <lvargas@rankia.com>",
   "license": "MIT",
@@ -14,6 +13,8 @@
     "mocha": "^8.1.1"
   },
   "dependencies": {
+    "basichtml": "^2.3.0",
     "bowser": "^2.9.0"
-  }
+  },
+  "type": "module"
 }
