@@ -5,13 +5,13 @@
   "description": "A template for kick starting a Cloudflare Workers project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "format": "prettier --write '**/*.{js,css,json,md}'"
   },
   "author": "007lva <lvargas@rankia.com>",
   "license": "MIT",
   "devDependencies": {
-    "prettier": "^1.18.2"
+    "mocha": "^8.1.1"
   },
   "dependencies": {
     "bowser": "^2.9.0"
