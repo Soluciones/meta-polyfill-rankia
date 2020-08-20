@@ -11,7 +11,7 @@ describe('IframeHandler', function () {
       it('loading=eager should be preserved if used', function () {
         const iframe = document.createElement('iframe')
         iframe.setAttribute('loading', 'eager')
-        iframe.setAttribute('src', 'https://placeimg.com/640/480/any')
+        iframe.setAttribute('src', 'https://www.rankia.com/hipotecas/que-hipoteca-elegir')
 
         iframeHandler.element(iframe)
 
@@ -24,12 +24,12 @@ describe('IframeHandler', function () {
       it('loading=lazy and src attributes should be replaced with is=lazyload-iframe and data-src', function () {
         const iframe = document.createElement('iframe')
         iframe.setAttribute('loading', 'lazy')
-        iframe.setAttribute('src', 'https://placeimg.com/640/480/any')
+        iframe.setAttribute('src', 'https://www.rankia.com/hipotecas/que-hipoteca-elegir')
 
         iframeHandler.element(iframe)
 
         assert.equal(iframe.hasAttribute('loading'), false)
-        assert.equal(iframe.hasAttribute('is'), true)
+        assert.equal(iframe.getAttribute('is'), 'lazyload-iframe')
         assert.equal(iframe.hasAttribute('src'), false)
         assert.equal(iframe.hasAttribute('data-src'), true)
       })
@@ -37,12 +37,12 @@ describe('IframeHandler', function () {
       it('is=lazyload-iframe should be preserved if used', function () {
         const iframe = document.createElement('iframe')
         iframe.setAttribute('is', 'lazyload-iframe')
-        iframe.setAttribute('data-src', 'https://placeimg.com/640/480/any')
+        iframe.setAttribute('data-src', 'https://www.rankia.com/hipotecas/que-hipoteca-elegir')
 
         iframeHandler.element(iframe)
 
         assert.equal(iframe.hasAttribute('loading'), false)
-        assert.equal(iframe.hasAttribute('is'), true)
+        assert.equal(iframe.getAttribute('is'), 'lazyload-iframe')
         assert.equal(iframe.hasAttribute('src'), false)
         assert.equal(iframe.hasAttribute('data-src'), true)
       })
