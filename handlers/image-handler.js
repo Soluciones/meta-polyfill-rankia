@@ -11,6 +11,10 @@ class ImageHandler {
         element.removeAttribute('loading')
         element.removeAttribute('src')
       }
+    } else if (!element.hasAttribute('is')) {
+      if (element.getAttribute('src').endsWith('.webp')) {
+        element.setAttribute('is', 'webp-support')
+      }
     }
   }
 }

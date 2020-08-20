@@ -46,6 +46,33 @@ describe('ImageHandler', function () {
         assert.equal(image.hasAttribute('src'), false)
         assert.equal(image.hasAttribute('data-src'), true)
       })
+
+      context('when the WebP format is not supported and the image is not lazy', function () {
+        it('add the attribute is=webp-support', function () {
+          const image = document.createElement('image')
+          image.setAttribute('src', 'https://www.rankia.com/images/rankia_logo.webp')
+
+          imageHandler.element(image)
+
+          assert.equal(image.getAttribute('is'), 'webp-support')
+          assert.equal(image.hasAttribute('src'), true)
+        })
+
+        context('when is using the attribute loading with `eager` value', function () {
+          it('should be preserved', function () {
+            const image = document.createElement('image')
+            image.setAttribute('loading', 'eager')
+            image.setAttribute('src', 'https://www.rankia.com/images/rankia_logo.webp')
+
+            imageHandler.element(image)
+
+            assert.equal(image.getAttribute('loading'), 'eager')
+            assert.equal(image.hasAttribute('is'), false)
+            assert.equal(image.hasAttribute('src'), true)
+            assert.equal(image.hasAttribute('data-src'), false)
+          })
+        })
+      })
     })
   })
 })
