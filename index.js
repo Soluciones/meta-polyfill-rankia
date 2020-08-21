@@ -9,7 +9,7 @@ async function handleRequest(request) {
   const rewriter = new HTMLRewriter()
   const supportsLazyLoadIframe = browser.satisfies({
     chrome: '>85',
-    firefox: '>79'
+    firefox: '>82'
   })
 
   if (!supportsLazyLoadIframe) {
