@@ -26,9 +26,12 @@ async function handleRequest(request) {
     })
 
     const supportsWebP = browser.satisfies({
-      chrome: '>85',
-      firefox: '>79',
-      safari: '>14'
+      chrome: '>32',
+      firefox: '>65',
+      safari: '>14',
+      mobile: {
+        firefox: '>68'
+      }
     })
 
     if (!supportsLazyLoadImage) {
