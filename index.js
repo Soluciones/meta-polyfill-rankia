@@ -13,7 +13,8 @@ async function handleRequest(request) {
   })
 
   if (!supportsLazyLoadIframe) {
-    rewriter.on('iframe[loading=lazy]', new IframeHandler())
+    const iframeHandler = new IframeHandler()
+    rewriter.on('iframe[loading=lazy]', iframeHandler)
 
     const supportsLazyLoadImage = browser.satisfies({
       chrome: '>76',
@@ -31,7 +32,8 @@ async function handleRequest(request) {
     })
 
     if (!supportsLazyLoadImage) {
-      rewriter.on('img', new ImageHandler(supportsWebP))
+      const imageHandler = new ImageHandler(supportsWebP)
+      rewriter.on('img', imageHandler)
     }
   }
 
