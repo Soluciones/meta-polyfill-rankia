@@ -1,50 +1,41 @@
 import Bowser from 'bowser'
+import ImageHandler from './handlers/image-handler.js'
+import IframeHandler from './handlers/iframe-handler.js'
 
 async function handleRequest(request) {
   const response = await fetch(request)
-
   const userAgent = request.headers.get('User-Agent') || ''
-
   const browser = Bowser.getParser(userAgent)
-
-  const hasNativeSupportOnImages = browser.satisfies({
-    chrome: '>76',
-    firefox: '>75',
-    edge: '>80',
-    mobile: {
-      chrome: '>80'
-    }
-  })
-
-  const hasNativeSupportOnIframes = browser.satisfies({
+  const rewriter = new HTMLRewriter()
+  const supportsLazyLoadIframe = browser.satisfies({
     chrome: '>85',
     firefox: '>79'
   })
 
-  const rewriter = new HTMLRewriter()
-    .on('img', new ElementHandler(hasNativeSupportOnImages, 'lazyload-image'))
-    .on('iframe', new ElementHandler(hasNativeSupportOnIframes, 'lazyload-iframe'))
+  if (!supportsLazyLoadIframe) {
+    rewriter.on('iframe[loading=lazy]', new IframeHandler())
 
-  return rewriter.transform(response)
-}
-
-class ElementHandler {
-  constructor (hasNativeSupport, customElement) {
-    this.hasNativeSupport = hasNativeSupport
-    this.customElement = customElement
-  }
-
-  element (element) {
-    if (element.hasAttribute('src') && !element.hasAttribute('loading')) {
-      if (this.hasNativeSupport) {
-        element.setAttribute('loading', 'lazy')
-      } else {
-        element.setAttribute('data-src', element.getAttribute('src'))
-        element.setAttribute('is', this.customElement)
-        element.removeAttribute('src')
+    const supportsLazyLoadImage = browser.satisfies({
+      chrome: '>76',
+      firefox: '>75',
+      edge: '>80',
+      mobile: {
+        chrome: '>80'
       }
+    })
+
+    const supportsWebP = browser.satisfies({
+      chrome: '>85',
+      firefox: '>79',
+      safari: '>14'
+    })
+
+    if (!supportsLazyLoadImage) {
+      rewriter.on('img', new ImageHandler(supportsWebP))
     }
   }
+
+  return rewriter.transform(response)
 }
 
 addEventListener('fetch', event => {
