@@ -7,6 +7,7 @@ async function handleRequest(request) {
   const userAgent = request.headers.get('User-Agent') || ''
   const browser = Bowser.getParser(userAgent)
   const rewriter = new HTMLRewriter()
+
   const supportsLazyLoadIframe = browser.satisfies({
     chrome: '>85',
     firefox: '>82'
@@ -25,16 +26,16 @@ async function handleRequest(request) {
       }
     })
 
-    const supportsWebP = browser.satisfies({
-      chrome: '>32',
-      firefox: '>65',
-      safari: '>14',
-      mobile: {
-        firefox: '>68'
-      }
-    })
-
     if (!supportsLazyLoadImage) {
+      const supportsWebP = browser.satisfies({
+        chrome: '>32',
+        firefox: '>65',
+        safari: '>14',
+        mobile: {
+          firefox: '>68'
+        }
+      })
+
       const imageHandler = new ImageHandler(supportsWebP)
       rewriter.on('img', imageHandler)
     }
