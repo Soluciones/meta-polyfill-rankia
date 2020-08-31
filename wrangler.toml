@@ -4,6 +4,11 @@ account_id = "d37ab906812cbc49bfff95e41dd1f736"
 workers_dev = false
 zone_id = "b9bf055168903c1cd533603c2bf026c1"
 routes = [
-  "https://www.rankia.mx/blog/*",
-  "https://www.rankia.mx/foros/*"
+  "https://www.rankia.com/*",
+  "https://www.rankia.mx/*",
+  "https://www.rankia.pe/*",
+  "https://www.rankia.cl/*",
+  "https://www.rankia.com.ar/*",
+  "https://www.rankia.us/*",
+  "https://www.rankia.co/*"
 ]
