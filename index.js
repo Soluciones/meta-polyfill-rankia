@@ -10,7 +10,7 @@ async function handleRequest(request) {
 
   const supportsLazyLoadIframe = browser.satisfies({
     chrome: '>85',
-    firefox: '>82'
+    firefox: '>84'
   })
 
   if (!supportsLazyLoadIframe) {
@@ -31,6 +31,7 @@ async function handleRequest(request) {
         chrome: '>32',
         firefox: '>65',
         safari: '>14',
+        edge: '>18',
         mobile: {
           firefox: '>68'
         }
