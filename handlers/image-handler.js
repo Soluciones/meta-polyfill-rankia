@@ -1,6 +1,7 @@
 class ImageHandler {
-  constructor () {
+  constructor (supportsWebP) {
     this.customElement = 'lazyload-image'
+    this.supportsWebP = supportsWebP
   }
 
   element (element) {
@@ -12,7 +13,7 @@ class ImageHandler {
         element.removeAttribute('src')
       }
     } else if (!element.hasAttribute('is')) {
-      if (element.getAttribute('src').endsWith('.webp')) {
+      if (element.getAttribute('src').endsWith('.webp') && !this.supportsWebP) {
         element.setAttribute('is', 'webp-support')
       }
     }
