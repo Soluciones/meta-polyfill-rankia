@@ -59,7 +59,7 @@ describe('ImageHandler', function () {
         })
 
         context('when is using the attribute loading with `eager` value', function () {
-          it('should be preserved', function () {
+          it('keep loading=eager but also adds is=webp-support', function () {
             const image = document.createElement('image')
             image.setAttribute('loading', 'eager')
             image.setAttribute('src', 'https://www.rankia.com/images/rankia_logo.webp')
@@ -67,7 +67,7 @@ describe('ImageHandler', function () {
             imageHandler.element(image)
 
             assert.equal(image.getAttribute('loading'), 'eager')
-            assert.equal(image.hasAttribute('is'), false)
+            assert.equal(image.getAttribute('is'), 'webp-support')
             assert.equal(image.hasAttribute('src'), true)
             assert.equal(image.hasAttribute('data-src'), false)
           })
