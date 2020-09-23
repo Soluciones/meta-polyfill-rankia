@@ -18,11 +18,11 @@ async function handleRequest(request) {
     rewriter.on('iframe[loading=lazy]', iframeHandler)
 
     const supportsLazyLoadImage = browser.satisfies({
-      chrome: '>76',
+      chrome: '>84',
       firefox: '>75',
       edge: '>80',
       mobile: {
-        chrome: '>80'
+        chrome: '>84'
       }
     })
 
@@ -30,7 +30,7 @@ async function handleRequest(request) {
       const supportsWebP = browser.satisfies({
         chrome: '>32',
         firefox: '>65',
-        safari: '>14',
+        safari: '>15',
         edge: '>18',
         mobile: {
           firefox: '>68'
