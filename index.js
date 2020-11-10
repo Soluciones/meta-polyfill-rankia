@@ -9,7 +9,7 @@ async function handleRequest(request) {
   const rewriter = new HTMLRewriter()
 
   const os = browser.parseOS()
-  const osName = os.name.toLowerCase()
+  const osName = os.name && os.name.toLowerCase()
   const osVersion = os.version
 
   // iOS < 14 is problematic and needs a special treatment
