@@ -12,7 +12,7 @@ async function handleRequest(request) {
   const osName = os.name.toLowerCase()
   const osVersion = os.version
 
-  // iOS < 14 is problematic and need special treatment
+  // iOS < 14 is problematic and needs a special treatment
   if (osName === 'ios' && !isNaN(osVersion) && parseFloat(osVersion) < 14) {
     const iframeHandler = new IframeHandler()
     const imageHandler = new ImageHandler(false)
