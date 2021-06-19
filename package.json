@@ -13,7 +13,7 @@
     "mocha": "^8.1.1"
   },
   "dependencies": {
-    "basichtml": "^2.3.0",
+    "basichtml": "^2.4.6",
     "bowser": "^2.9.0"
   },
   "type": "module"
